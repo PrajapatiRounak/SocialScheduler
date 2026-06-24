@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./Landing.css";
 
@@ -8,8 +8,7 @@ export default function Landing() {
 
   // If already logged in, go to dashboard
   if (user) {
-    nav("/");
-    return null;
+    return <Navigate to="/dashboard" replace />;
   }
 
   const scrollToFeatures = () => {
