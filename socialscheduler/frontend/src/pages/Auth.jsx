@@ -14,7 +14,7 @@ export default function Auth() {
     try {
       if (mode === "login") await login(form.email, form.password);
       else await register(form.name, form.email, form.password);
-      nav("/");
+      nav("/dashboard");
     } catch (e) {
       setError(e.response?.data?.message || "Something went wrong");
     }
