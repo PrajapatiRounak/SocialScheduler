@@ -25,7 +25,14 @@ app.get("/api/health", (req, res) => res.json({ status: "ok" }));
 
 const PORT = process.env.PORT || 5000;
 
-connectDB().then(() => {
-  startScheduler();
-  app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
-});
+connectDB()
+  .then(() => {
+    startScheduler();
+    app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+  })
+  .catch((err) => {
+    console.error("❌ Startup error:", err);
+    process.exit(1);
+  });
+
+console.log(process.env.FACEBOOK_APP_ID);
